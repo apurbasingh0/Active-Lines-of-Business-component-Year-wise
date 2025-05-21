@@ -1,0 +1,67 @@
+<!--
+  @description       : 
+  @author            : Savita Jamdarkhani
+  @group             : Appstrail
+  @last modified by  : Apurba Singh
+  @last modified on  : 09-01-2025
+-->
+<template>
+    <article class="slds-card slds-card_boundary">
+
+        <!--HEADER START-->
+        <div class="slds-card__header slds-grid slds-theme_shade" style="padding-bottom: 10px;">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+
+                <!--HEADER TITLE-->
+                <div class="slds-media__body slds-align_absolute-center" >
+                    <h2 class="slds-card__header-title">
+                        <span class="slds-card__header-link slds-truncate" style="margin-left: 4rem;margin-top: -1.5rem;">
+                            <span>Business Extracted – Current FY</span>
+                        </span>
+                    </h2>
+                     <lightning-helptext style='padding-left: 0.3rem; margin-top: -2.1rem;' content="Shows Taxable Value from invoice for all Closed Won opportunities"></lightning-helptext>
+                </div>
+                <div>
+                    <lightning-combobox
+                        name="year"
+                        value={selectedYear}
+                        placeholder="Select Year"
+                        options={yearOptions}
+                        onchange={handleChange}>
+                    </lightning-combobox>
+                </div>
+            </header>
+        </div>
+        <!--HEADER END-->
+        
+        <!--BODY START-->
+        <div class="slds-card__body slds-card__body_inner slds-p-around--none">
+
+            <!--SPINNER-->
+            <div if:true={load}>
+                <lightning-spinner variant="brand" size="large"> </lightning-spinner>
+            </div>            
+
+            <div if:false={noBu}>
+            <!--SELECTED PRODUCT START-->
+                <div class="slds-grid slds-wrap">
+                    <template for:each={oppBu} for:item="BU">
+                        <div key={BU.BUName} class="slds-col slds-size_1-of-4 slds-p-top_medium">
+                            <span class={BU.class}>
+                                <lightning-icon icon-name={BU.iconUrl} size="small" variant="inverse"></lightning-icon>
+                            </span> 
+                            <span class="BU-name">
+                                <h1 class={BU.effect}>
+                                <div if:true={BU.BUName}>{BU.BUName}<br/>{BU.BUAmount}</div>
+                                </h1>
+                            </span>
+                        </div>
+                    </template>
+                </div>                
+            </div>
+            <!-- <c-pagination-component records={recordId} record-size="6" onupdate={getBUs}></c-pagination-component> -->
+
+        </div>
+        <!--BODY END-->
+    </article>
+</template>
