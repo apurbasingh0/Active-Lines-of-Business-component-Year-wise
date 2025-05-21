@@ -1,6 +1,6 @@
 /**
 * @description       : used in "ActiveLinesofBusinessComponent" LWC to Display all product and highlight product which current account related opportunity it stage is closewon contains product
-* @authorName        : Savita Jamdarkhani
+* @authorName        : Apurba Singh
 * @group             : Appstrail
 * @last modified on  : 09-01-2025
 * @last modified by  : Apurba Singh
